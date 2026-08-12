@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink-950: #0a0c11;
+  --color-ink-900: #0f131a;
+  --color-ink-800: #151a23;
+  --color-ink-700: #1c222e;
+  --color-ink-600: #262e3d;
+
+  --color-mist-200: #e7e9ee;
+  --color-mist-300: #b7becc;
+  --color-mist-400: #8b92a4;
+
+  --color-violet-400: #9c8cf0;
+  --color-violet-500: #8c7ae6;
+  --color-violet-600: #7461d6;
+
+  --color-amber-400: #f0c168;
+  --color-amber-500: #e8b34a;
+
+  --color-sage-400: #7fd9a6;
+  --color-sage-500: #6fcf97;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-body: "Inter", sans-serif;
+}
+
+/* --- your existing custom CSS below (from styles.css) --- */
+/* ==========================================================
+   Sujen Rajthala — Portfolio
+   Custom styles layered on top of Tailwind CSS (via CDN)
+   ========================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  background-color: #0a0c11;
+  background-image:
+    radial-gradient(
+      ellipse 80% 50% at 50% -10%,
+      rgba(140, 122, 230, 0.16),
+      transparent
+    ),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size:
+    auto,
+    48px 48px,
+    48px 48px;
+}
+
+::selection {
+  background: #8c7ae6;
+  color: #0a0c11;
+}
+
+/* Accessible focus states */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #e8b34a;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip link (accessibility) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: #e8b34a;
+  color: #0a0c11;
+  padding: 10px 16px;
+  font-weight: 600;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* Blinking cursor inside the code panel */
+.cursor-blink::after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  background: #e8b34a;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Scroll-triggered reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slim scrollbar for the code panel */
+.code-scroll::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.code-scroll::-webkit-scrollbar-thumb {
+  background: #262e3d;
+  border-radius: 3px;
+}
+
+/* Gradient border wrapper for the hero code panel */
+.glow-border {
+  background: linear-gradient(
+    180deg,
+    rgba(140, 122, 230, 0.35),
+    rgba(140, 122, 230, 0)
+  );
+  padding: 1px;
+  border-radius: 14px;
+}
+
+/* Nav link underline hover effect */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background: #e8b34a;
+  transition: width 0.25s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Animated proficiency bars in the hero */
+.proficiency-fill {
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
